@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine for My Siblings 💖</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    background:radial-gradient(circle at center,#ff758c,#ff7eb3,#ffb199);
+    color:rgb(35, 11, 11);
+}
+
+h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.neon{
+    font-size:26px;
+    font-weight:bold;
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 20px #ff4da6,
+        0 0 40px #ff4da6,
+        0 0 80px #ff4da6;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #360bf5,0 0 20px #ff4da6; }
+    to{ text-shadow:0 0 20px #ffffff,0 0 40px #ff1a8c; }
+}
+
+.heart{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:red;
+    transform:rotate(45deg);
+    animation:explode 1s forwards;
+}
+
+.heart::before,
+.heart::after{
+    content:'';
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:red;
+    border-radius:50%;
+}
+
+.heart::before{ top:-10px; left:0; }
+.heart::after{ left:-10px; top:0; }
+
+@keyframes explode{
+    to{
+        opacity:0;
+        transform:translateY(-100px) scale(2) rotate(45deg);
+    }
+}
+
+.firework{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:yellow;
+    animation:burst 1s forwards;
+}
+
+@keyframes burst{
+    to{
+        transform:scale(6);
+        opacity:0;
+    }
+}
+
+.confetti{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:blue;
+    animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+}
+
+@keyframes fadeUp{
+  0%{opacity:0; transform:translateY(20px) scale(0.5);}
+  50%{opacity:1;}
+  100%{opacity:0; transform:translateY(-60px) scale(1.2);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Valentine’s Day 💕</h1>
+<div class="neon">  Kamayo tanan ✨</div>
+<p>Click anywhere to celebrate our family love! 💖</p>
+<!>by: Kuya DUDZZ! 💖 💖</p1>
+
+
+<script>
+
+// 🔥 REPLACE WITH YOUR REAL SIBLING NAMES
+const siblings = [
+  "Mama ELS",
+  "Manang LynLyn",
+  "Ate Recel",
+  "Otol Ann2",
+  "Pedring(bibi)",
+  "Ate Phing",
+  "Kuya Dodong",
+  "Kuya Richard",
+  "Anting",
+  "Argie",
+"Papa Cesar",
+  
+  
+];
+
+// 💖 Heart Explosion
+function heartExplosion(x,y){
+    for(let i=0;i<15;i++){
+        const h=document.createElement("div");
+        h.className="heart";
+        h.style.left=(x+Math.random()*60-30)+"px";
+        h.style.top=(y+Math.random()*60-30)+"px";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),1000);
+    }
+}
+
+// 🎆 Fireworks
+function fireworks(x,y){
+    for(let i=0;i<10;i++){
+        const f=document.createElement("div");
+        f.className="firework";
+        f.style.left=(x+Math.random()*40-20)+"px";
+        f.style.top=(y+Math.random()*40-20)+"px";
+        f.style.background="hsl("+Math.random()*360+",100%,50%)";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    }
+}
+
+// 🎉 Confetti
+function confetti(){
+    for(let i=0;i<30;i++){
+        const c=document.createElement("div");
+        c.className="confetti";
+        c.style.left=Math.random()*window.innerWidth+"px";
+        c.style.background="hsl("+Math.random()*360+",100%,50%)";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),3000);
+    }
+}
+
+// ✨ Glowing Names
+function showSiblingLove(x,y){
+  siblings.forEach((name,index)=>{
+    setTimeout(()=>{
+      const nameEl=document.createElement("div");
+      nameEl.innerText=name+" 💖";
+      nameEl.style.position="absolute";
+      nameEl.style.left=(x+(Math.random()*200-100))+"px";
+      nameEl.style.top=(y+(Math.random()*200-100))+"px";
+      nameEl.style.fontSize="22px";
+      nameEl.style.fontWeight="bold";
+      nameEl.style.color="#fff";
+      nameEl.style.textShadow="0 0 10px #fff,0 0 20px #ff4da6,0 0 40px #ff4da6";
+      nameEl.style.animation="fadeUp 2s forwards";
+      document.body.appendChild(nameEl);
+      setTimeout(()=>nameEl.remove(),2000);
+    },index*250);
+  });
+}
+
+// 🎊 Click Event
+document.addEventListener("click",function(e){
+    heartExplosion(e.clientX,e.clientY);
+    fireworks(e.clientX,e.clientY);
+    confetti();
+    showSiblingLove(e.clientX,e.clientY);
+});
+
+</script>
+
+</body>
+</html>
